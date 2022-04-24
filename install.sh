@@ -28,4 +28,4 @@ sudo mkdir -p /etc/containerd
 sudo su -
 containerd config default | tee /etc/containerd/config.toml
 exit
-sudo systemctl restart containerd
+
