@@ -111,7 +111,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-   - port: 5432
+    port: 5432
+    targetPort: 5432
   selector:
     tier: test
     app: postgres
