@@ -4,6 +4,7 @@ metadata:
   name: postgres-pv-volume-test
   labels:
     type: local
+    tier: test
     app: postgres
 spec:
   storageClassName: manual
@@ -25,7 +26,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgres-pv-claim-test
-  namespace: production
+  namespace: test
   labels:
     tier: test
     app: postgres
@@ -60,7 +61,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres
+          image: postgres:latest
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
