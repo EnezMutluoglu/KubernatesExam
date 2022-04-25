@@ -128,3 +128,6 @@ $ kubeadm join --token abcdef.1234567890abcdef --discovery-token-ca-cert-hash sh
 
 #taintleri listeleme
 kubectl get nodes -o json | jq '.items[].spec.taints'
+
+#secret decode
+kubectl get secret postgresql-test-secret -n test -o jsonpath="{.data.POSTGRES_USER}" | base64 --decode
