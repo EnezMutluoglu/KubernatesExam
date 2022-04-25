@@ -41,14 +41,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  namespace: test
+  labels:
+    tier: test
+    app: postgres
+
 spec:
   replicas: 1
   selector:
     matchLabels:
+      tier: test
       app: postgres
   template:
     metadata:
       labels:
+        tier: test
         app: postgres
     spec:
       containers:
@@ -94,12 +101,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: test
   name: postgres
   labels:
+    tier: test
     app: postgres
 spec:
   type: NodePort
   ports:
    - port: 5432
   selector:
-   app: postgres
+    tier: test
+    app: postgres
