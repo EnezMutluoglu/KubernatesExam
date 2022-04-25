@@ -109,9 +109,10 @@ metadata:
     tier: test
     app: postgres
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - port: 5432
+  - protocol: TCP
+    port: 5432
     targetPort: 5432
   selector:
     tier: test
