@@ -14,7 +14,8 @@ node2=$(kubectl get no -o jsonpath="{.items[2].metadata.name}")
 
 node3=$(kubectl get no -o jsonpath="{.items[3].metadata.name}")
 
-kubectl taint node $master nodeMaster=MasternodeNoSchdulepods:NoSchedule
+kubectl taint node $master node-role.kubernetes.io/controlplane:NoSchedule
+kubectl taint node $master node-role.kubernetes.io/etcd:NoSchedule
 
 kubectl taint node $node1 tier=production:NoSchedule
 
@@ -30,7 +31,7 @@ kubectl label node $node3 tier=production
 
 
 #Wordpress ve mysql secrest yaratarak değişkenleri saklıyoruz Test için
-kubectl create secret generic mysql-test-secret -n test --from-file=MYSQL_ROOT_PASSWORD=./yaml/mysql_root_password.txt --from-file=MYSQL_USER=./yaml/mysql_user.txt --from-file=MYSQL_PASSWORD=./yaml/mysql_password.txt --from-file=MYSQL_DATABASE=./yaml/mysql_database.txt
+kubectl create secret generic postgresql-test-secret -n test --from-file=POSTGRES_ROOT_PASSWORD=./yaml/mysql_root_password.txt --from-file=POSTGRES_USER=./yaml/mysql_user.txt --from-file=POSTGRES_PASSWORD=./yaml/mysql_password.txt --from-file=POSTGRES_DATABASE=./yaml/mysql_database.txt
 
 #yukardakinin production ortamı için
 kubectl create secret generic mysql-prod-secret -n production --from-file=MYSQL_ROOT_PASSWORD=./yaml/mysql_root_password.txt --from-file=MYSQL_USER=./yaml/mysql_user.txt --from-file=MYSQL_PASSWORD=./yaml/mysql_password.txt --from-file=MYSQL_DATABASE=./yaml/mysql_database.txt
@@ -124,3 +125,6 @@ e18105ef24bacebb23d694dad491e8ef1c2ea9ade944e784b1f03a15a0d5ecea
 # join to cluster 
 $ kubeadm join --token abcdef.1234567890abcdef --discovery-token-ca-cert-hash sha256:e18105ef24bacebb23d694dad491e8ef1c2ea9ade944e784b1f03a15a0d5ecea 1.2.3.4:6443
 
+
+#taintleri listeleme
+kubectl get nodes -o json | jq '.items[].spec.taints'

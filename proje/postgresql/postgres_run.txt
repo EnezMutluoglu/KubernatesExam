@@ -1,0 +1,1 @@
+kubectl create secret generic postgresql-test-secret -n test --from-file=POSTGRES_USER=./secrest/user.txt --from-file=POSTGRES_PASSWORD=./secrest/password.txt --from-file=POSTGRES_DATABASE=./secrest/database.txt
