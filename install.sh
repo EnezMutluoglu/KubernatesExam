@@ -39,7 +39,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 
 #sudo kubeadm config images pull
-#sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip> --control-plane-endpoint=<ip>
+#sudo kubeadm init --pod-network-cidr=172.24.0.0/16 --apiserver-advertise-address=192.168.59.30 --control-plane-endpoint=192.168.59.30
 #mkdir -p $HOME/.kube
 #sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #sudo chown $(id -u):$(id -g) $HOME/.kube/config
