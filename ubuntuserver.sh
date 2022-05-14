@@ -59,13 +59,13 @@ sudo apt update
 sudo apt install -y containerd.io
 
 # Configure containerd and start service
-sudo mkdir -p /etc/containerd
-sudo containerd config default | tee /etc/containerd/config.toml
+sudo su -
+mkdir -p /etc/containerd
+containerd config default>/etc/containerd/config.toml
 
 # restart containerd
 sudo systemctl restart containerd
 sudo systemctl enable containerd
-systemctl status  containerd
 
 lsmod | grep br_netfilter
 

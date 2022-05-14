@@ -27,6 +27,7 @@ sudo apt-get install containerd -y
 sudo mkdir -p /etc/containerd
 sudo containerd config default | tee /etc/containerd/config.toml
 
+
 sudo systemctl restart containerd
 
 sudo apt-get update
