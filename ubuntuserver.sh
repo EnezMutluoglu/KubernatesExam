@@ -75,10 +75,12 @@ sudo systemctl enable kubelet
 #kubeadm reset
 
 #sudo kubeadm config images pull
-#sudo kubeadm init --pod-network-cidr=172.24.0.0/16 --apiserver-advertise-address=192.168.59.30 --control-plane-endpoint=192.168.59.30
+#sudo kubeadm init --pod-network-cidr=172.24.0.0/16 --apiserver-advertise-address=192.168.1.30 --control-plane-endpoint=192.168.1.30
 #mkdir -p $HOME/.kube
 #sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 #kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+
+
 
