@@ -71,6 +71,9 @@ lsmod | grep br_netfilter
 
 sudo systemctl enable kubelet
 
+#echo 1 > /proc/sys/net/ipv4/ip_forward
+#kubeadm reset
+
 #sudo kubeadm config images pull
 #sudo kubeadm init --pod-network-cidr=172.24.0.0/16 --apiserver-advertise-address=192.168.59.30 --control-plane-endpoint=192.168.59.30
 #mkdir -p $HOME/.kube

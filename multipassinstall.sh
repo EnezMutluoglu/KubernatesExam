@@ -46,3 +46,11 @@ sudo apt-mark hold kubelet kubeadm kubectl
 #sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 #kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+
+#yetmezsse direk calico kurulumu 
+#curl https://docs.projectcalico.org/manifests/calico-typha.yaml -o calico.yaml
+#kubectl apply -f calico.yaml
+
+#node silme
+#kubectl drain <node-name> --ignore-daemonsets --delete-local-data
+#kubectl delete node <node-name>
