@@ -83,4 +83,19 @@ sudo systemctl enable kubelet
 #kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 
 
+#sudo kubeadm token create
+#kubeadm token list
+#kubeadm token create --print-join-command
+
+
+#sudo swapoff -a
+
+#kubectl get nodes
+#
+#kubectl drain <node-name>
+#
+#kubectl drain <node-name> --ignore-daemonsets --delete-local-data
+#
+#kubectl delete node <node-name>
+
 

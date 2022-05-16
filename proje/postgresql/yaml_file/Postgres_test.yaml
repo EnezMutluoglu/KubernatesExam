@@ -26,7 +26,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgres-pv-claim-test
-  namespace: test
   labels:
     tier: test
     app: postgres
@@ -43,7 +42,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: test
   labels:
     tier: test
     app: postgres
@@ -88,13 +86,13 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgredb
-      nodeSelector:
-        tier: test
-      tolerations:
-      - key: "tier"
-        operator: "Equal"
-        value: "test"
-        effect: "NoSchedule"
+#      nodeSelector:
+#        tier: test
+#      tolerations:
+#      - key: "tier"
+#        operator: "Equal"
+#        value: "test"
+#        effect: "NoSchedule"
       volumes:
         - name: postgredb
           persistentVolumeClaim:
@@ -103,17 +101,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: test
   name: postgres
   labels:
-    tier: test
     app: postgres
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-  - protocol: TCP
-    port: 5432
-    targetPort: 5432
+   - port: 5432
   selector:
-    tier: test
-    app: postgres
+   tier: test
+   app: postgres
+
